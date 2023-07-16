@@ -1,0 +1,68 @@
+$main_dark_color: #2C1338;
+$main_light_color: #E57CD8;
+
+body {
+  color: #fff;
+  background-color: $main_dark_color;
+  font-family: 'Ysabeau Infant', sans-serif;
+}
+
+.main-content {
+  max-width: 800px;
+}
+
+h1 {
+  font-weight: 400;
+  line-height: 1.1;
+  font-size: clamp(4.5rem * 0.5, 4.2vw, 4.5rem);
+  color: #FFF3F2;
+  margin-bottom: 25px;
+
+  em {
+    color: $main_light_color;
+  }
+}
+
+h2 {
+  line-height: 1.5;
+  font-size: clamp(1.375rem * 0.75, 1.55vw, 1.375rem);
+  margin-bottom: 40px;
+  max-width: 430px;
+  color: #FCE5D8;
+}
+
+form {
+  .field input {
+    color: #FCE5D8;
+    background: transparent;
+    border: 2px solid #ABA0AF;
+    height: 50px;
+    padding-left: 15px;
+    caret-color: #2C1338;
+    border-radius: 8px;
+    line-height: 1.6;
+    font-size: clamp(1rem * 0.95, 1vw, 1rem);
+    min-width: 50%;
+    max-width: 75%;
+    margin-bottom: 1em;
+  }
+
+  .actions input[type="submit"] {
+    height: 52px;
+    min-width: 50%;
+    max-width: 75%;
+    font-size: 1rem;
+    padding: 14px 25px;
+    border-radius: 26px;
+    border: 0;
+    cursor: pointer;
+    -webkit-transition: background-color 150ms linear, color 150ms linear;
+    transition: background-color 150ms linear, color 150ms linear;
+    background-color: #E57CD8;
+    color: #FFFFFF;
+
+    &:hover {
+      background-color: #564260;
+    }
+  }
+}
