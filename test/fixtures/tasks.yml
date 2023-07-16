@@ -2,8 +2,10 @@
 
 one:
   title: MyString
-  status: 1
+  description: MyText
+  due_date: 2023-07-16 23:05:41
 
 two:
   title: MyString
-  status: 1
+  description: MyText
+  due_date: 2023-07-16 23:05:41
