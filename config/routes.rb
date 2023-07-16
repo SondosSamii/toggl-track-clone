@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :projects
+  resources :tasks
   devise_for :users
 
   # add the following route for sign out

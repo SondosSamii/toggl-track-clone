@@ -32,19 +32,23 @@ h2 {
 }
 
 form {
-  .field input {
-    color: #FCE5D8;
-    background: transparent;
-    border: 2px solid #ABA0AF;
-    height: 50px;
-    padding-left: 15px;
-    caret-color: #2C1338;
-    border-radius: 8px;
-    line-height: 1.6;
-    font-size: clamp(1rem * 0.95, 1vw, 1rem);
-    min-width: 50%;
-    max-width: 75%;
-    margin-bottom: 1em;
+  .field {
+
+    input[type="email"],
+    input[type="password"] {
+      color: #FCE5D8;
+      background: transparent;
+      border: 2px solid #ABA0AF;
+      height: 50px;
+      padding-left: 15px;
+      caret-color: #2C1338;
+      border-radius: 8px;
+      line-height: 1.6;
+      font-size: clamp(1rem * 0.95, 1vw, 1rem);
+      min-width: 50%;
+      max-width: 75%;
+      margin-bottom: 1em;
+    }
   }
 
   .actions input[type="submit"] {
