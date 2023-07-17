@@ -7,6 +7,10 @@
     <%= render task %>
     <p>
       <%= link_to "Show this task", task %>
+      <a onclick="startTimer(this)">
+        Start Timer
+        <label class="minutes task-<%= task.id %>">00</label>:<label class="seconds">00</label>
+      </a>
     </p>
   <% end %>
 </div>
