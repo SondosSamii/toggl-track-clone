@@ -1,0 +1,27 @@
+<% if user_signed_in? %>
+  <nav>
+    <h1 class="user-email"><%= current_user.email %></h1>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <%= link_to "Edit Profile", edit_user_registration_path, method: :get, class: "nav-link" %>
+      </li>
+      <li class="nav-item mt-auto">
+        <%= link_to "Log Out", users_sign_out_path, method: :delete, class: "nav-link" %>
+      </li>
+    </ul>
+  </nav>
+<% else %>
+  <nav>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <p class="nav-link mt-5">Welcome!</p>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign In", "users/sign_in", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sign Up", "users/sign_up", class: "nav-link" %>
+      </li>
+    </ul>
+  </nav>
+<% end %>

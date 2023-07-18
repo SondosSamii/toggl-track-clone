@@ -1,4 +1,4 @@
-console.log("Task Timer started successfully!");
+console.log("Main Script works!");
 
 let totalSeconds = 0;
 let timerInterval = null;

@@ -1,0 +1,33 @@
+@import "colors";
+
+nav {
+  grid-area: nav;
+  height: 100vh;
+  color: $nav_text_color;
+  background-color: $main_dark_color;
+
+  h1.user-email {
+    font-size: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    background-color: $secondary_dark_color;
+    padding: 1.5rem 1rem;
+  }
+
+  ul {
+    height: calc(100% - 110px);
+
+    .nav-item {
+      .nav-link {
+        color: $nav_text_color;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          color: $nav_text_color;
+          background-color: $secondary_light_color;
+        }
+      }
+    }
+  }
+}

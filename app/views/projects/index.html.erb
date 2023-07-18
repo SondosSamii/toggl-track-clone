@@ -1,14 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Projects</h1>
+<h1>All Projects</h1>
+
+<div class="mb-4">
+  <%= link_to "+ New project", new_project_path, class: "secondary-btn mb-5" %>
+</div>
 
 <div id="projects">
   <% @projects.each do |project| %>
     <%= render project %>
     <p>
-      <%= link_to "Show this project", project %>
+      <%= link_to "Show this project", project, class: "main-btn" %>
     </p>
   <% end %>
 </div>
-
-<%= link_to "New project", new_project_path %>

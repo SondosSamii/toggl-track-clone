@@ -1,0 +1,110 @@
+@import "colors";
+
+body {
+  font-family: 'Ysabeau Infant', sans-serif;
+  display: grid;
+  grid-template-areas: "nav main";
+  grid-template-columns: 200px auto;
+}
+
+main {
+  grid-area: main;
+
+  h1 {
+    font-weight: 400;
+    line-height: 1.1;
+    font-size: clamp(4.5rem * 0.5, 4.2vw, 4.5rem);
+    margin-bottom: 25px;
+
+    em {
+      color: $main_light_color;
+    }
+  }
+
+  h2 {
+    line-height: 1.5;
+    font-size: clamp(1.375rem * 0.75, 1.55vw, 1.375rem);
+    margin-bottom: 40px;
+    max-width: 430px;
+    color: #FCE5D8;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s ease-in-out;
+
+    &.main-btn {
+      color: $main_white_color;
+      background-color: $secondary_dark_color;
+
+      &:hover {
+        background-color: $secondary_light_color;
+      }
+    }
+
+    &.secondary-btn {
+      font-weight: 600;
+      color: $secondary_dark_color;
+      background-color: transparent;
+      border: 1px solid $secondary_dark_color;
+
+      &:hover {
+        // background-color: $secondary_dark_color;
+      }
+    }
+  }
+}
+
+p {
+
+  &.alert {
+    width: fit-content;
+    position: fixed;
+    right: 0.5rem;
+    bottom: 0.5rem;
+    margin-bottom: 0;
+    z-index: 9;
+  }
+}
+
+form {
+  .field {
+
+    input[type="email"],
+    input[type="password"] {
+      color: #FCE5D8;
+      background: transparent;
+      border: 2px solid #ABA0AF;
+      height: 50px;
+      padding-left: 15px;
+      caret-color: #2C1338;
+      border-radius: 8px;
+      line-height: 1.6;
+      font-size: clamp(1rem * 0.95, 1vw, 1rem);
+      min-width: 50%;
+      max-width: 75%;
+      margin-bottom: 1em;
+    }
+  }
+
+  .actions input[type="submit"] {
+    height: 52px;
+    min-width: 50%;
+    max-width: 75%;
+    font-size: 1rem;
+    padding: 14px 25px;
+    border-radius: 26px;
+    border: 0;
+    cursor: pointer;
+    -webkit-transition: background-color 150ms linear, color 150ms linear;
+    transition: background-color 150ms linear, color 150ms linear;
+    background-color: #E57CD8;
+    color: #FFFFFF;
+
+    &:hover {
+      background-color: #564260;
+    }
+  }
+}
