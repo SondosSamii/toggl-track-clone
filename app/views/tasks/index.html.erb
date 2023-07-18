@@ -7,9 +7,10 @@
     <%= render task %>
     <p>
       <%= link_to "Show this task", task %>
-      <a onclick="startTimer(this)" data-timer-state="not_started">
-        Start Timer
-        <label class="minutes task-<%= task.id %>">00</label>:<label class="seconds">00</label>
+      <a id="task-<%= task.id %>-timer" data-timer-state="not_started" class="toggle-timer">
+        StartTimer
+        <label class="minutes" id="task-<%= task.id %>-minutes">00</label>:
+        <label class="seconds" id="task-<%= task.id %>-seconds">00</label>
       </a>
     </p>
   <% end %>
