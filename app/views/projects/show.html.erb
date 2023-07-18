@@ -5,8 +5,6 @@
 <div>
   <%= link_to "Edit this project", edit_project_path(@project), class: "secondary-btn" %>
 
-  <%= link_to "Add Task", "/tasks", class: "secondary-btn" %>
-
   <%= link_to "Back to projects", projects_path, class: "main-btn" %>
 
   <%= button_to "Destroy this project", @project, method: :delete, class: "btn main-btn mt-4" %>
