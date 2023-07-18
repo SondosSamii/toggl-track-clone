@@ -29,7 +29,8 @@ main {
     color: #FCE5D8;
   }
 
-  a {
+  a,
+  button {
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
@@ -49,10 +50,28 @@ main {
       color: $secondary_dark_color;
       background-color: transparent;
       border: 1px solid $secondary_dark_color;
+      transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
       &:hover {
-        // background-color: $secondary_dark_color;
+        color: $main_white_color;
+        background-color: $secondary_dark_color;
       }
+    }
+  }
+
+  .submit-btn input[type="submit"] {
+    font-weight: 600;
+    border-radius: 0.4rem;
+    border: 1px solid $secondary_dark_color;
+    color: $secondary_dark_color;
+    background-color: transparent;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+
+    &:hover {
+      color: $main_white_color;
+      background-color: $secondary_dark_color;
     }
   }
 }
