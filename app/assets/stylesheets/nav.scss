@@ -1,8 +1,13 @@
 @import "colors";
+@import "variables";
 
 nav {
   grid-area: nav;
-  height: 100vh;
+  width: $nav_width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
   color: $nav_text_color;
   background-color: $main_dark_color;
 
@@ -27,6 +32,12 @@ nav {
           color: $nav_text_color;
           background-color: $secondary_light_color;
         }
+      }
+
+      &.log-out-btn {
+        position: fixed;
+        left: 0;
+        bottom: 1rem;
       }
     }
   }

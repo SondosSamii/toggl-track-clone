@@ -1,10 +1,11 @@
 @import "colors";
+@import "variables";
 
 body {
   font-family: 'Ysabeau Infant', sans-serif;
   display: grid;
   grid-template-areas: "nav main";
-  grid-template-columns: 200px auto;
+  grid-template-columns: $nav_width auto;
 }
 
 main {
@@ -34,13 +35,14 @@ main {
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
-    transition: background-color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
     &.main-btn {
       color: $main_white_color;
       background-color: $secondary_dark_color;
 
       &:hover {
+        color: $main_white_color;
         background-color: $secondary_light_color;
       }
     }
