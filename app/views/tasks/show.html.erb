@@ -2,13 +2,8 @@
 
 <%= render @task %>
 
-<div>
-  <%= link_to "Edit this task", edit_task_path(@task), class: "secondary-btn me-2" %>
-  <%# link_to "Back to tasks", tasks_path, class: "main-btn" %>
-
-  <%= button_to "Destroy this task", @task, method: :delete, class: "secondary-btn mt-4" %>
-</div>
-
-<div class="mt-4">
+<div class="row-btns">
   <%= link_to "Back to projects", projects_path, class: "main-btn" %>
+  <%= link_to "Edit this task", edit_task_path(@task), class: "secondary-btn" %>
+  <%= button_to "Destroy this task", @task, method: :delete, class: "secondary-btn" %>
 </div>

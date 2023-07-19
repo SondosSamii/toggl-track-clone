@@ -30,8 +30,14 @@ main {
     color: #FCE5D8;
   }
 
+  .row-btns {
+    display: flex;
+    gap: 1rem;
+  }
+
   a,
   button {
+    height: 40px;
     text-decoration: none;
     padding: 0.5rem 1rem;
     border-radius: 0.4rem;
@@ -62,6 +68,7 @@ main {
   }
 
   .submit-btn input[type="submit"] {
+    height: 40px;
     font-weight: 600;
     border-radius: 0.4rem;
     border: 1px solid $secondary_dark_color;
