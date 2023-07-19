@@ -3,11 +3,18 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    # @tasks = Task.all
+    begin
+      @project = Project.find(params[:project_id])
+      @tasks = @project.tasks
+    rescue ActiveRecord::RecordNotFound
+      redirect_to projects_path
+    end
   end
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    @task = Task.find(params[:id])
   end
 
   # GET /tasks/new
@@ -65,6 +72,6 @@ class TasksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def task_params
-      params.require(:task).permit(:title, :description, :due_date)
+      params.require(:task).permit(:title, :description, :due_date, :project_id)
     end
 end
