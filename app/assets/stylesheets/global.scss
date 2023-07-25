@@ -39,13 +39,13 @@ main {
   button {
     height: 40px;
     text-decoration: none;
-    padding: 0.5rem 1rem;
     border-radius: 0.4rem;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 
     &.main-btn {
       color: $main_white_color;
       background-color: $secondary_dark_color;
+      padding: 0.5rem 1rem;
 
       &:hover {
         color: $main_white_color;
@@ -59,6 +59,7 @@ main {
       background-color: transparent;
       border: 1px solid $secondary_dark_color;
       transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+      padding: 0.5rem 1rem;
 
       &:hover {
         color: $main_white_color;
@@ -83,6 +84,69 @@ main {
       background-color: $secondary_dark_color;
     }
   }
+
+  .form-page {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 75%;
+    justify-content: center;
+    align-items: center;
+    color: $main_white_color;
+    background-color: $secondary_light_color;
+
+    form {
+      .field {
+
+        input[type="email"],
+        input[type="password"] {
+          height: 50px;
+          width: 100%;
+          color: #FCE5D8;
+          background-color: $secondary_light_color;
+          caret-color: #FCE5D8;
+          border: 2px solid #ABA0AF;
+          padding-left: 15px;
+          border-radius: 8px;
+          line-height: 1.6;
+          font-size: clamp(1rem * 0.95, 1vw, 1rem);
+          margin-bottom: 1em;
+
+          &:focus-visible {
+            outline: none;
+          }
+
+          &:-webkit-autofill,
+          &:-webkit-autofill:focus {
+            // transition: background-color 600000s 0s, color 600000s 0s;
+            transition: background-color 100s 0s, color 100s 0s;
+          }
+        }
+      }
+
+      .actions input[type="submit"] {
+        height: 52px;
+        width: 100%;
+        font-size: 1rem;
+        padding: 14px 25px;
+        border-radius: 26px;
+        border: 0;
+        cursor: pointer;
+        -webkit-transition: background-color 150ms linear, color 150ms linear;
+        transition: background-color 150ms linear, color 150ms linear;
+        background-color: #E57CD8;
+        color: #FFFFFF;
+
+        &:hover {
+          background-color: #564260;
+        }
+      }
+    }
+
+    .main_light_color {
+      color: $main_light_color;
+      text-decoration: underline;
+    }
+  }
 }
 
 p {
@@ -94,45 +158,5 @@ p {
     bottom: 0.5rem;
     margin-bottom: 0;
     z-index: 9;
-  }
-}
-
-form {
-  .field {
-
-    input[type="email"],
-    input[type="password"] {
-      color: #FCE5D8;
-      background: transparent;
-      border: 2px solid #ABA0AF;
-      height: 50px;
-      padding-left: 15px;
-      caret-color: #2C1338;
-      border-radius: 8px;
-      line-height: 1.6;
-      font-size: clamp(1rem * 0.95, 1vw, 1rem);
-      min-width: 50%;
-      max-width: 75%;
-      margin-bottom: 1em;
-    }
-  }
-
-  .actions input[type="submit"] {
-    height: 52px;
-    min-width: 50%;
-    max-width: 75%;
-    font-size: 1rem;
-    padding: 14px 25px;
-    border-radius: 26px;
-    border: 0;
-    cursor: pointer;
-    -webkit-transition: background-color 150ms linear, color 150ms linear;
-    transition: background-color 150ms linear, color 150ms linear;
-    background-color: #E57CD8;
-    color: #FFFFFF;
-
-    &:hover {
-      background-color: #564260;
-    }
   }
 }

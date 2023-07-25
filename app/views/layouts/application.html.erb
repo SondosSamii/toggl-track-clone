@@ -23,9 +23,7 @@
     <% if alert %> <p class="alert alert-danger"><%= alert %></p> <% end %>
     <%= render "shared/nav" %>
     <main>
-      <div class="container">
-        <%= yield %>
-      </div>
+      <%= yield %>
     </main>
   </body>
 </html>

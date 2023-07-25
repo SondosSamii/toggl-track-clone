@@ -1,19 +1,32 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <% if user_signed_in? %>
+    <%# <p style="color: green"> %>
+    <%# notice %>
+    <%# </p> %>
 
-<h1>All Projects</h1>
+    <h1>All Projects</h1>
 
-<div class="mb-4">
-  <%= link_to "+ New project", new_project_path, class: "secondary-btn mb-5" %>
-</div>
-
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-    <div class="row-btns">
-      <%= link_to "Show this project", project, class: "main-btn" %>
-        <%= link_to "Edit this project", edit_project_path(project), class: "secondary-btn" %>
-      <%= button_to "Destroy this project", project, method: :delete, class: "secondary-btn" %>
+    <div class="mb-4">
+      <%= link_to "+ New project", new_project_path, class: "secondary-btn mb-5" %>
     </div>
-    <hr/>
+
+    <div id="projects">
+      <% @projects.each do |project| %>
+        <%= render project %>
+        <div class="row-btns">
+          <%= link_to "Show this project", project, class: "main-btn" %>
+            <%= link_to "Edit this project", edit_project_path(project), class: "secondary-btn" %>
+          <%= button_to "Destroy this project", project, method: :delete, class: "secondary-btn" %>
+        </div>
+        <hr/>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="row justify-content-center align-items-center" style="height: 100vh; ">
+      <h1 class="text-center">Please,
+        <%= link_to "Sign In", new_user_session_path, method: :get, class: "text-dark" %> or
+        <%= link_to "Sign Up", new_user_registration_path, method: :get, class: "text-dark" %>
+      </h1>
+    </div>
   <% end %>
 </div>
