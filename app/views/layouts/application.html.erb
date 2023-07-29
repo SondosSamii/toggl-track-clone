@@ -23,7 +23,13 @@
     <% if alert %> <p class="alert alert-danger"><%= alert %></p> <% end %>
     <%= render "shared/nav" %>
     <main>
-      <%= yield %>
+      <% if user_signed_in? %>
+        <div class="container">
+          <%= yield %>
+        </div>
+      <% else %>
+        <%= yield %>
+      <% end %>
     </main>
   </body>
 </html>
