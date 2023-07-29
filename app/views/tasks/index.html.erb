@@ -7,14 +7,12 @@
   <%= link_to "Back to projects", projects_path, class: "main-btn" %>
 </div>
 
-<div class="mb-4">
-</div>
-
 <div id="tasks">
   <% @tasks.each do |task| %>
     <%= render task %>
     <p>
-      <a id="task-<%= task.id %>-timer" data-timer-state="not_started" class="main-btn toggle-timer">
+      <a id="task-<%= task.id %>-timer" data-timer-state="not_started"
+        data-time-elapsed="<%= task.total_time_elapsed %>" class="main-btn toggle-timer">
         StartTimer
         <label class="minutes" id="task-<%= task.id %>-minutes">00</label>:
         <label class="seconds" id="task-<%= task.id %>-seconds">00</label>
@@ -29,3 +27,71 @@
     <hr/>
   <% end %>
 </div>
+
+<script>
+  console.log("Task Timer Script works!");
+
+  let totalSeconds = 0;
+  let timerInterval = null;
+
+  const all_timers = document.getElementsByClassName('toggle-timer');
+
+  for (const timer of all_timers) {
+    timer.addEventListener('click', () => {
+      startTimer(timer);
+    })
+  }
+
+  function startTimer(thisElem) {
+    if(thisElem && thisElem.dataset) {
+      const timerState = thisElem.dataset.timerState;
+      if (timerState === "running") {
+        totalSeconds = parseInt(thisElem.dataset.timeElapsed);
+        pauseTimer(thisElem);
+      } else {
+        totalSeconds = parseInt(thisElem.dataset.timeElapsed) || 0;
+        startInterval(thisElem);
+      }
+    }
+  }
+
+  function startInterval(thisElem) {
+    const minutes = thisElem.getElementsByClassName("minutes")[0];
+    const seconds = thisElem.getElementsByClassName("seconds")[0];
+
+    if (thisElem && thisElem.dataset) {
+      pauseTimer();
+      thisElem.dataset.timerState = "running";
+      thisElem.dataset.timeElapsed = parseInt((minutes.innerHTML * 60)) + parseInt(seconds.innerHTML);
+      timerInterval = setInterval(() => {
+        setTime( minutes, seconds );
+      }, 1000);
+    }
+  }
+
+  function pauseTimer(thisElem) {
+    if (thisElem && thisElem.dataset) {
+      const minutes = thisElem.getElementsByClassName("minutes")[0];
+      const seconds = thisElem.getElementsByClassName("seconds")[0];
+      clearInterval(timerInterval);
+      thisElem.dataset.timerState = "paused";
+      thisElem.dataset.timeElapsed = parseInt((minutes.innerHTML * 60)) + parseInt(seconds.innerHTML);
+      timerInterval = null;
+    }
+  }
+
+  function setTime(minutes, seconds) {
+    ++totalSeconds;
+    seconds.innerHTML = pad(totalSeconds % 60);
+    minutes.innerHTML = pad(parseInt(totalSeconds / 60));
+  }
+
+  function pad(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+      return "0" + valString;
+    } else {
+      return valString;
+    }
+  }
+</script>
