@@ -10,8 +10,8 @@
     <% @projects.each do |project| %>
       <%= render project %>
       <div class="row-btns">
-        <%= link_to "Show this project", project, class: "main-btn" %>
-          <%= link_to "Edit this project", edit_project_path(project), class: "secondary-btn" %>
+        <%= link_to "Show project tasks", project_tasks_path(project_id: project.id), class: "main-btn" %>
+        <%= link_to "Edit this project", edit_project_path(project), class: "secondary-btn" %>
         <%= button_to "Destroy this project", project, method: :delete, class: "secondary-btn" %>
       </div>
       <hr/>
