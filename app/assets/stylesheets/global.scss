@@ -41,6 +41,7 @@ main {
     text-decoration: none;
     border-radius: 0.4rem;
     transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    cursor: pointer;
 
     &.main-btn {
       color: $main_white_color;
@@ -64,6 +65,14 @@ main {
       &:hover {
         color: $main_white_color;
         background-color: $secondary_dark_color;
+      }
+    }
+
+    &.toggle-timer {
+      display: inline-block;
+
+      label {
+        cursor: inherit;
       }
     }
   }
@@ -149,7 +158,6 @@ main {
 }
 
 p {
-
   &.alert {
     width: fit-content;
     position: fixed;
