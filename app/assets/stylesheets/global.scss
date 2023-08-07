@@ -52,6 +52,10 @@ main {
         color: $main_white_color;
         background-color: $secondary_light_color;
       }
+
+      &.toggle_timer {
+        margin-right: 1rem;
+      }
     }
 
     &.secondary-btn {
