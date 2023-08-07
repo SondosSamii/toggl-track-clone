@@ -11,7 +11,7 @@
   <% @tasks.each do |task| %>
     <%= render task %>
     <p id="task_<%= task.id %>_timer" data-timer-state="not_started"
-        data-time-elapsed="<%= task.total_time_elapsed || 0 %>" class="timer">
+        data-time-elapsed="0" class="timer">
       <a class="main-btn toggle_timer" id="toggle_timer">Start Timer</a>
       <label class="minutes" id="task-<%= task.id %>-minutes">00</label>:
       <label class="seconds" id="task-<%= task.id %>-seconds">00</label>
@@ -51,7 +51,7 @@
           totalSeconds++;
           minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
           secondsLabel.innerHTML = pad(totalSeconds % 60);
-        }, 100);
+        }, 1000);
         runningTimers[i] = timerInterval;
       } else {
         pauseTimer(timerContainer, timerInterval);
@@ -68,7 +68,6 @@
       }
     }
   }
-
 
   function pauseTimer(timer, interval) {
     clearInterval(interval);
