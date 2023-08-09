@@ -5,8 +5,12 @@
   </p>
 
   <p>
-    <strong>Description:</strong>
-    <%= task.description %>
+    <% if task.description && task.description.length > 0 %>
+      <strong>Description:</strong>
+      <%= task.description %>
+    <% else %>
+      <span>No description available.</span>
+    <% end %>
   </p>
 
 </div>

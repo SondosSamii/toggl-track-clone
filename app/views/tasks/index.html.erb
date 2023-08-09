@@ -10,11 +10,18 @@
 <div id="tasks">
   <% @tasks.each do |task| %>
     <%= render task %>
-    <p id="task_<%= task.id %>_timer" data-timer-state="not_started"
-        data-time-elapsed="0" class="timer">
+    <p id="<%= task.id %>" data-project-id="<%= task.project_id %>" data-timer-state="not_started"
+        data-time-elapsed="<%= task.total_time_elapsed %>" class="timer">
       <a class="main-btn toggle_timer" id="toggle_timer">Start Timer</a>
-      <label class="minutes" id="task-<%= task.id %>-minutes">00</label>:
-      <label class="seconds" id="task-<%= task.id %>-seconds">00</label>
+      <strong>Total Elapsed Time:</strong>
+      <% converted_time = convert_time_elapsed(task.total_time_elapsed) %>
+      <% if task.total_time_elapsed === 0 %>
+        <label class="minutes" id="task-<%= task.id %>-minutes">00</label>:
+        <label class="seconds" id="task-<%= task.id %>-seconds">00</label>
+      <% else %>
+        <label class="minutes" id="task-<%= task.id %>-minutes"><%= converted_time[:minutes] %></label>:
+        <label class="seconds" id="task-<%= task.id %>-seconds"><%= converted_time[:seconds] %></label>
+      <% end %>
     </p>
 
     <div class="row-btns">
@@ -26,65 +33,6 @@
   <% end %>
 </div>
 
-<script>
-  const timerContainers = document.getElementsByClassName("timer");
-  const runningTimers = [];
-
-  for (let i = 0; i < timerContainers.length; i++) {
-    const timerContainer = timerContainers[i]
-    const toggleBtn = timerContainer.querySelector("#toggle_timer");
-    const minutesLabel = timerContainer.querySelector(".minutes");
-    const secondsLabel = timerContainer.querySelector(".seconds");
-
-    let totalSeconds = parseInt(timerContainer.dataset.timeElapsed) || 0;
-    let timerInterval = null;
-
-    runningTimers.push(timerInterval);
-
-    toggleBtn.addEventListener("click", () => {
-      pauseOtherTimers(i, toggleBtn);
-
-      if(!timerInterval || timerContainer.dataset.timerState === "paused") {
-        timerContainer.dataset.timerState = "running";
-        changeToggleBtn(toggleBtn, "Pause");
-        timerInterval = setInterval(() => {
-          totalSeconds++;
-          minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-          secondsLabel.innerHTML = pad(totalSeconds % 60);
-        }, 1000);
-        runningTimers[i] = timerInterval;
-      } else {
-        pauseTimer(timerContainer, timerInterval);
-        changeToggleBtn(toggleBtn, "Continue")
-      }
-    })
-  }
-
- function pauseOtherTimers(currentIndex, toggleBtn) {
-    for (let i = 0; i < runningTimers.length; i++) {
-      if (i !== currentIndex && runningTimers[i]) {
-        pauseTimer(timerContainers[i], runningTimers[i]);
-        changeToggleBtn(timerContainers[i].querySelector("#toggle_timer"), "Continue")
-      }
-    }
-  }
-
-  function pauseTimer(timer, interval) {
-    clearInterval(interval);
-    interval = null;
-    timer.dataset.timerState = "paused";
-  }
-
-  function changeToggleBtn(btn, btnStatus) {
-    btn.innerHTML = `${btnStatus} Timer`
-  }
-
-  function pad(val) {
-    var valString = val + "";
-    if (valString.length < 2) {
-      return "0" + valString;
-    } else {
-      return valString;
-    }
-  }
-</script>
+<% content_for :javascript do %>
+  <%= javascript_include_tag 'tasksTimer' %>
+<% end %>

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
   resources :projects do
-    resources :tasks
+    resources :tasks do
+      member do
+        patch :update_elapsed_time
+      end
+    end
   end
   resources :tasks
+
   devise_for :users
 
   # add the following route for sign out

@@ -59,8 +59,29 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: "Task was successfully destroyed." }
+      format.html { redirect_to project_tasks_path(project_id: @task.project_id), notice: "Task was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def update_elapsed_time
+    @task = Task.find(params[:id])
+    elapsed_time = params[:total_time_elapsed].to_i || 0
+
+    if elapsed_time.positive?
+      @task.total_time_elapsed = elapsed_time
+      puts "Inside elapsed_time.positive? total_time_elapsed: #{@task.total_time_elapsed}"
+      if @task.save
+        render json: { total_time_elapsed: @task.total_time_elapsed }
+        puts "After Save total_time_elapsed: #{@task.total_time_elapsed}"
+        puts "JSON Response: #{response.body}"
+      else
+        render json: { errors: @task.errors.full_messages }, status: :unprocessable_entity
+        puts "*Error*: #{@task.total_time_elapsed}"
+      end
+    else
+      render json: { errors: ["Elapsed time must be a positive integer"] }, status: :unprocessable_entity
+      puts "*Error*: #{@task.total_time_elapsed}"
     end
   end
 
