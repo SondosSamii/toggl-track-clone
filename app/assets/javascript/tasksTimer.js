@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
       runningTimers.push(timerInterval);
 
       toggleBtn.addEventListener("click", () => {
-        pauseOtherTimers(i, toggleBtn, totalSeconds);
+        pauseOtherTimers(i);
 
         if (!timerInterval || thisTimer.dataset.timerState === "paused") {
           thisTimer.dataset.timerState = "running";
@@ -39,10 +39,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function pauseOtherTimers(currentIndex, toggleBtn, totalSeconds) {
+  function pauseOtherTimers(currentIndex) {
     for (let i = 0; i < runningTimers.length; i++) {
       if (i !== currentIndex && runningTimers[i]) {
-        pauseTimer(timerContainers[i], runningTimers[i], totalSeconds);
+        pauseTimer(
+          timerContainers[i],
+          runningTimers[i],
+          getCurrentTime(timerContainers[i])
+        );
         changeToggleBtn(
           timerContainers[i].querySelector("#toggle_timer"),
           "Continue"
@@ -56,6 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
     interval = null;
     timer.dataset.timerState = "paused";
     updateTotalTimeElapsed(timer.id, totalSeconds);
+  }
+
+  function getCurrentTime(timer) {
+    const minutesLabel = timer.querySelector(".minutes");
+    const secondsLabel = timer.querySelector(".seconds");
+    return (
+      parseInt(minutesLabel.textContent) * 60 +
+      parseInt(secondsLabel.textContent)
+    );
   }
 
   function changeToggleBtn(btn, btnStatus) {
